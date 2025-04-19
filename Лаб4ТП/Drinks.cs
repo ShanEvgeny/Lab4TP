@@ -8,10 +8,11 @@ namespace Лаб4ТП
 {
     public abstract class Drink
     {
-        protected double Volume = 0;
+        public double Volume = 0;
+        public static Random random = new Random();
         public virtual String GetInfo()
         {
-            var result = String.Format("\nОбъем:{0}", this.Volume);
+            var result = String.Format("\nОбъем: {0}", this.Volume);
             return result;
         }
     }
@@ -28,6 +29,15 @@ namespace Лаб4ТП
             result += String.Format("\nНаличие мякоти: {0}", this.IsTherePulp);
             return result;
         }
+        public static Juice Generate()
+        {
+            return new Juice
+            {
+                Volume = 1 + random.Next() % 10,
+                fruit = (UsedFruitInJuice)random.Next(5),
+                IsTherePulp = random.Next() % 2 == 0
+            };
+        }
     }
     public enum TypeOfSoda { water, lemonade, cola }
     public class Soda : Drink
@@ -42,6 +52,15 @@ namespace Лаб4ТП
             result += String.Format("\nКоличество пузырьков: {0}", this.CountBubbles);
             return result;
         }
+        public static Soda Generate()
+        {
+            return new Soda
+            {
+                Volume = 1 + random.Next() % 10,
+                type = (TypeOfSoda)random.Next(3),
+                CountBubbles = 5000 + random.Next() % 5000
+            };
+        }
     }
     public enum TypeOfAlcohol { wine, beer, cider }
     public class Alcohol : Drink
@@ -55,6 +74,15 @@ namespace Лаб4ТП
             result += String.Format("\nКрепость: {0}", this.Strength);
             result += String.Format("\nТип: {0}", this.type);
             return result;
+        }
+        public static Alcohol Generate()
+        {
+            return new Alcohol
+            {
+                Volume = 1 + random.Next() % 10,
+                type = (TypeOfAlcohol)random.Next(3),
+                Strength = 6 + random.Next() % 30
+            };
         }
     }
 }

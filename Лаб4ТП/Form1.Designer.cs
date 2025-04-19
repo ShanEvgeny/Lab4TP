@@ -32,13 +32,14 @@
             txtInfo = new RichTextBox();
             btnGet = new Button();
             txtOut = new RichTextBox();
+            txtQueue = new RichTextBox();
             SuspendLayout();
             // 
             // btnRefill
             // 
             btnRefill.Location = new Point(25, 27);
             btnRefill.Name = "btnRefill";
-            btnRefill.Size = new Size(369, 29);
+            btnRefill.Size = new Size(423, 29);
             btnRefill.TabIndex = 0;
             btnRefill.Text = "Перезаполнить";
             btnRefill.UseVisualStyleBackColor = true;
@@ -50,15 +51,15 @@
             txtInfo.Location = new Point(25, 62);
             txtInfo.Name = "txtInfo";
             txtInfo.ReadOnly = true;
-            txtInfo.Size = new Size(369, 55);
+            txtInfo.Size = new Size(369, 72);
             txtInfo.TabIndex = 1;
             txtInfo.Text = "";
             // 
             // btnGet
             // 
-            btnGet.Location = new Point(274, 140);
+            btnGet.Location = new Point(356, 140);
             btnGet.Name = "btnGet";
-            btnGet.Size = new Size(120, 146);
+            btnGet.Size = new Size(92, 213);
             btnGet.TabIndex = 2;
             btnGet.Text = "Взять";
             btnGet.UseVisualStyleBackColor = true;
@@ -68,15 +69,26 @@
             // 
             txtOut.Location = new Point(25, 140);
             txtOut.Name = "txtOut";
-            txtOut.Size = new Size(231, 146);
+            txtOut.Size = new Size(215, 213);
             txtOut.TabIndex = 3;
             txtOut.Text = "";
+            // 
+            // txtQueue
+            // 
+            txtQueue.BorderStyle = BorderStyle.None;
+            txtQueue.Location = new Point(246, 140);
+            txtQueue.Name = "txtQueue";
+            txtQueue.ReadOnly = true;
+            txtQueue.Size = new Size(104, 231);
+            txtQueue.TabIndex = 4;
+            txtQueue.Text = "";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(410, 324);
+            ClientSize = new Size(460, 367);
+            Controls.Add(txtQueue);
             Controls.Add(txtOut);
             Controls.Add(btnGet);
             Controls.Add(txtInfo);
@@ -92,5 +104,6 @@
         private RichTextBox txtInfo;
         private Button btnGet;
         private RichTextBox txtOut;
+        private RichTextBox txtQueue;
     }
 }
