@@ -6,5 +6,15 @@ namespace Лаб4ТП
         {
             InitializeComponent();
         }
+
+        private void btnRefill_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
