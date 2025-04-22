@@ -16,7 +16,13 @@ namespace Лаб4ТП
             return result;
         }
     }
-    public enum UsedFruitInJuice { apple, orange, pear, pomegranate, peach }
+    public enum UsedFruitInJuice { 
+        apple, 
+        orange, 
+        pear, 
+        pomegranate, 
+        peach
+    }
     public class Juice : Drink
     {
         protected UsedFruitInJuice fruit = UsedFruitInJuice.apple;
@@ -25,9 +31,26 @@ namespace Лаб4ТП
         {
             var result = "Сок";
             result += base.GetInfo();
-            result += String.Format("\nИспользованный фрукт: {0}",this.fruit);
-            result += String.Format("\nНаличие мякоти: {0}", this.IsTherePulp);
+            result += $"\nИспользованный фрукт: {GetFruit(this.fruit)}";
+            result += String.Format("\nНаличие мякоти: {0}", this.IsTherePulp ? "да" : "нет");
             return result;
+        }
+        public static string GetFruit(UsedFruitInJuice fruit)
+        {
+            switch (fruit)
+            {
+                case UsedFruitInJuice.apple:
+                    return "яблоко";
+                case UsedFruitInJuice.orange:
+                    return "апельсин";
+                case UsedFruitInJuice.pear:
+                    return "груша";
+                case UsedFruitInJuice.pomegranate:
+                    return "гранат";
+                case UsedFruitInJuice.peach:
+                    return "персик";
+            }
+            return "";
         }
         public static Juice Generate()
         {
@@ -35,9 +58,10 @@ namespace Лаб4ТП
             {
                 Volume = 1 + random.Next() % 10,
                 fruit = (UsedFruitInJuice)random.Next(5),
-                IsTherePulp = random.Next() % 2 == 0
+                IsTherePulp = random.Next() % 2 == 0,
             };
         }
+        
     }
     public enum TypeOfSoda { water, lemonade, cola }
     public class Soda : Drink
@@ -48,9 +72,22 @@ namespace Лаб4ТП
         {
             var result = "Газировка";
             result += base.GetInfo();
-            result += String.Format("\nВид: {0}", this.type);
+            result += String.Format("\nВид: {0}", GetType(this.type));
             result += String.Format("\nКоличество пузырьков: {0}", this.CountBubbles);
             return result;
+        }
+        public static string GetType(TypeOfSoda type)
+        {
+            switch (type)
+            {
+                case TypeOfSoda.water:
+                    return "вода";
+                case TypeOfSoda.lemonade:
+                    return "лемонад";
+                case TypeOfSoda.cola:
+                    return "кола";
+            }
+            return "";
         }
         public static Soda Generate()
         {
@@ -72,8 +109,21 @@ namespace Лаб4ТП
             var result = "Алкоголь";
             result += base.GetInfo();
             result += String.Format("\nКрепость: {0}", this.Strength);
-            result += String.Format("\nТип: {0}", this.type);
+            result += String.Format("\nТип: {0}", GetType(this.type));
             return result;
+        }
+        public static string GetType(TypeOfAlcohol type)
+        {
+            switch (type)
+            {
+                case TypeOfAlcohol.wine:
+                    return "вино";
+                case TypeOfAlcohol.beer:
+                    return "пиво";
+                case TypeOfAlcohol.cider:
+                    return "сидр";
+            }
+            return "";
         }
         public static Alcohol Generate()
         {
